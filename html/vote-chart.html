@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Vote Result Chart</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    body {
+      font-family: sans-serif;
+      background: #fff9f0;
+      text-align: center;
+      padding: 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* ✅ Center horizontally */
+      justify-content: flex-start; /* or center if you want vertical center */
+      min-height: 100vh;
+    }
+  
+    .chart-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 40px;
+    }
+  
+    canvas {
+      max-width: 600px;
+      max-height: 400px;
+    }
+  </style>
+  
+</head>
+<body>
+  <h1>📊 Vote Count per Candidate</h1>
+  <div class="chart-container"></div>
+  <canvas id="voteChart" width="600" height="400"></canvas>
+</div>
+
+  <script>
+    fetch('/api/vote-result')
+      .then(res => res.json())
+      .then(data => {
+        const names = data.map(d => d.name);
+        const counts = data.map(d => d.vote_count);
+
+        new Chart(document.getElementById("voteChart"), {
+          type: 'bar',
+          data: {
+            labels: names,
+            datasets: [{
+              label: 'Total Votes',
+              data: counts,
+              backgroundColor: '#f58549'
+            }]
+          },
+          options: {
+            responsive: true,
+            scales: {
+              y: {
+                beginAtZero: true,
+                ticks: {
+                  stepSize: 1
+                }
+              }
+            }
+          }
+        });
+      })
+      .catch(err => {
+        alert("Error loading chart.");
+        console.error(err);
+      });
+  </script>
+</body>
+</html>
