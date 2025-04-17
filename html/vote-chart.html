@@ -11,11 +11,16 @@
       background: #fff9f0;
       text-align: center;
       padding: 30px;
+      padding-top: 0%;
       display: flex;
       flex-direction: column;
       align-items: center; /* ✅ Center horizontally */
       justify-content: flex-start; /* or center if you want vertical center */
       min-height: 100vh;
+      margin-top: 0%;
+      margin-left: 0%;
+      margin-right: 0%;
+
     }
   
     .chart-container {
@@ -29,9 +34,61 @@
       max-width: 600px;
       max-height: 400px;
     }
+    .navbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: #ff9b13;
+      color: white;
+      height: 80px;
+      padding: 0 32px;
+      border: 0.5px solid rgba(105, 105, 105, 0.1);
+      box-shadow: rgba(99, 99, 99, 0.2) 0px 3px 8px 0px;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 999;
+    }
+    
+    .navbar ul {
+      list-style: none;
+      display: flex;
+      margin: 0;
+      padding: 0;
+    }
+    
+    .navbar ul li {
+      margin-left: 20px;
+    }
+    
+    .navbar ul li a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+    
+    .navbar ul li a:hover {
+      color: #333;
+    }
+    
   </style>
   
 </head>
+
+<nav class="navbar">
+  <div>
+    <img src="/image/Picture1.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 10px;">
+  </div>
+  <ul>
+    <li><a href="/">Home</a></li>
+    <li><a href="/list-candidate">About</a></li>
+    <li><a href="/chart">Chart</a></li>
+    <li><a href="javascript:void(0);" onclick="logout()">Logout</a></li>
+  </ul>
+</nav>
+
 <body>
   <h1>📊 Vote Count per Candidate</h1>
   <div class="chart-container"></div>
