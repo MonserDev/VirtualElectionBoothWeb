@@ -180,7 +180,7 @@
 
 <body>
 
-  <!-- ✅ Navbar -->
+  <!--  Navbar -->
   <nav class="navbar">
     <div>
       <img src="/image/Picture1.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 10px;">
@@ -192,7 +192,7 @@
     </ul>
   </nav>
 
-  <!-- ✅ Candidate List -->
+  <!--  Candidate List -->
   <div class="list">
     <div class="list-container">
       <h1 style="margin-bottom:50px ;margin-top: 50px;">Choose your favorite</h1>
@@ -206,7 +206,7 @@
     </div>
   </div>
 
-  <!-- ✅ Popup Modal -->
+  <!-- Popup Modal -->
   <div id="modal">
     <div class="modal-content">
       <h2 id="modal-title">Candidate Details</h2>
@@ -217,7 +217,7 @@
     </div>
   </div>
 
-  <!-- ✅ Script for dynamic loading and modal -->
+  <!-- Script for dynamic loading and modal -->
   <script src="https://cdn.jsdelivr.net/npm/js-sha256@0.9.0/build/sha256.min.js"></script>
 
   <script>
@@ -301,7 +301,7 @@ fetch('/api/vote-status')
   method: 'POST',
   headers: { 'Content-Type': 'application/json' },
   body: JSON.stringify({
-    candidate_id: candidateId // ✅ only send candidate_id
+    candidate_id: candidateId // only send candidate_id
   })
 })
   .then(res => res.json())
@@ -323,13 +323,13 @@ fetch('/api/vote-status')
   function logout() {
     fetch('/api/logout', {
       method: 'POST',
-      credentials: 'include' // ✅ include session cookie
+      credentials: 'include' // include session cookie
     })
     .then(res => res.json())
     .then(data => {
       if (data.success) {
         alert("👋 Logged out successfully");
-        window.location.href = '/login'; // ✅ redirect to login page
+        window.location.href = '/login'; //redirect to login page
       } else {
         alert("❌ Logout failed");
       }

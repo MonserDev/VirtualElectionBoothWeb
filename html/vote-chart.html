@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Vote Result Chart</title>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <style>
@@ -14,26 +15,29 @@
       padding-top: 0%;
       display: flex;
       flex-direction: column;
-      align-items: center; /* ✅ Center horizontally */
-      justify-content: flex-start; /* or center if you want vertical center */
+      align-items: center;
+      /*Center horizontally */
+      justify-content: flex-start;
+      /*or center if you want vertical center */
       min-height: 100vh;
       margin-top: 0%;
       margin-left: 0%;
       margin-right: 0%;
 
     }
-  
+
     .chart-container {
       display: flex;
       justify-content: center;
       align-items: center;
       margin-top: 40px;
     }
-  
+
     canvas {
       max-width: 600px;
       max-height: 400px;
     }
+
     .navbar {
       display: flex;
       justify-content: space-between;
@@ -50,31 +54,30 @@
       width: 100%;
       z-index: 999;
     }
-    
+
     .navbar ul {
       list-style: none;
       display: flex;
       margin: 0;
       padding: 0;
     }
-    
+
     .navbar ul li {
       margin-left: 20px;
     }
-    
+
     .navbar ul li a {
       color: white;
       text-decoration: none;
       font-weight: bold;
       transition: color 0.3s;
     }
-    
+
     .navbar ul li a:hover {
       color: #333;
     }
-    
   </style>
-  
+
 </head>
 
 <nav class="navbar">
@@ -93,7 +96,7 @@
   <h1>📊 Vote Count per Candidate</h1>
   <div class="chart-container"></div>
   <canvas id="voteChart" width="600" height="400"></canvas>
-</div>
+  </div>
 
   <script>
     fetch('/api/vote-result')
@@ -129,6 +132,28 @@
         alert("Error loading chart.");
         console.error(err);
       });
+
+    function logout() {
+      fetch('/api/logout', {
+        method: 'POST',
+        credentials: 'include' // ✅ include session cookie
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.success) {
+            alert("👋 Logged out successfully");
+            window.location.href = '/login'; // ✅ redirect to login page
+          } else {
+            alert("❌ Logout failed");
+          }
+        })
+        .catch(err => {
+          console.error("Logout error:", err);
+          alert("❌ Logout failed");
+        });
+    }
+
   </script>
 </body>
+
 </html>

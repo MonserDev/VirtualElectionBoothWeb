@@ -4,9 +4,9 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>แสดงผู้สมัครเลือกตั้ง</title>
+  <title>candidate-list</title>
   <style>
-    /* ⬇️ your styles remain untouched ⬇️ */
+    /* your styles remain untouched */
     * {
       box-sizing: border-box;
       margin: 0;
@@ -134,7 +134,7 @@
 </head>
 
 <body>
-  <!-- ✅ Navbar -->
+  <!-- Navbar -->
   <nav class="navbar">
     <div>
       <img src="/image/Picture1.png" alt="Logo" style="width: 50px; height: 50px; border-radius: 10px;">
@@ -150,7 +150,7 @@
   <div class="container">
     <h2>List of Candidate</h2>
 
-    <!-- ✅ Where dynamic candidates go -->
+    <!-- Where dynamic candidates go -->
     <div id="candidate-list"></div>
 
     <div class="finish-button">
@@ -158,7 +158,7 @@
     </div>
   </div>
 
-  <!-- ✅ Load candidates with JavaScript -->
+  <!-- Load candidates with JavaScript -->
   <script>
     fetch('/api/candidates')
       .then(res => res.json())
@@ -193,13 +193,13 @@
     function logout() {
       fetch('/api/logout', {
         method: 'POST',
-        credentials: 'include' // ✅ include session cookie
+        credentials: 'include' // include session cookie
       })
         .then(res => res.json())
         .then(data => {
           if (data.success) {
             alert("👋 Logged out successfully");
-            window.location.href = '/login'; // ✅ redirect to login page
+            window.location.href = '/login'; //redirect to login page
           } else {
             alert("❌ Logout failed");
           }
