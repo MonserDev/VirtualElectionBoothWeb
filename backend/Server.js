@@ -96,7 +96,7 @@ const otpAttemptsByIP = {}; // { "127.0.0.1": { count: 3, lastTry: 1713378981112
 app.post('/api/verify-otp', (req, res) => {
     const { national_id, otp } = req.body;
 
-    // 🧠 Get the requester's IP address
+    // Get the requester's IP address
     const ip = req.ip === "::1" ? "127.0.0.1" : req.ip;
 
     // Initialize IP attempt tracking
